@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  a(href="/")
+    h1 &lt;&lt; Home
+  h1= imageName
+  p Uploaded.
+
+  img(src="/uploads/original/#{imageName}")

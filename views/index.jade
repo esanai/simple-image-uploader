@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Upload any image, please.
+
+  form(action="/upload", method="post", enctype="multipart/form-data")
+    input(type="file", name="imageFile")
+    input(type="submit", value="Upload")
+
+  - each thumb in thumbs
+    a(href="/images/#{thumb}")
+      img(src="/uploads/thumbs/#{thumb}")
+      | &nbsp;
