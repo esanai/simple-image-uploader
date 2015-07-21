@@ -40,6 +40,7 @@ app.get('/', function(req, res){
     res.render('index', { title: 'Simple Image Uploader', thumbs: files });
   });
 });
+
 app.post('/upload', function(req, res){
   fs.readFile(req.files.imageFile.path, function (err, data) {
     var imageName = req.files.imageFile.name;
@@ -65,15 +66,18 @@ app.post('/upload', function(req, res){
     });
   });
 });
+
 app.get('/images/:file', function (req, res){
   res.render('images', { imageName: req.params.file });
 });
+
 app.get('/uploads/original/:file', function (req, res){
   var file = req.params.file;
   var img = fs.readFileSync(__dirname + '/uploads/original/' + file);
   res.writeHead(200, { 'Content-Type': 'image/jpg' });
   res.end(img, 'binary');
 });
+
 app.get('/uploads/thumbs/:file', function (req, res){
   var file = req.params.file;
   var img = fs.readFileSync(__dirname + '/uploads/thumbs/' + file);
